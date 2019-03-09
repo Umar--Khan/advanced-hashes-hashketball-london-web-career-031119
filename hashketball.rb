@@ -113,77 +113,12 @@ def game_hash
  	}
 end
 
-def num_points_scored(player_name)
-    game_hash.each do |player|
-  	return player[:num_points_scored] if player[:player_name] == name
-  end
-
-def shoe_size(player_name)
-  game_hash.each do |game_d, game_v|
-  game_v.each do |team_d, team_v|
-  if team_d == :players
-  team_v.each do |player_d, player_v|
-  player_v.each_with_index do |data, i|
-   if data == player_name
-    return game_hash[game_d][:players][:shoe][i]
-            end
-          end
-        end
-      end
+def num_points_scored(player_n)
+  game_hash.each do |location, keys|
+    keys[:players].each do |player|
+      return player[:points] if player[:player_name] == player_n
     end
   end
 end
 
-def team_colors(team_name)
-  game_hash.each do |game_d, game_v|
-    game_v.each do |team_d, team_v|
-      if team_d == :team_name
-        team_v.each_line.with_index do |data, i|
-          if data == team_name
-            return game_hash[game_d][:colors]
-          end
-        end
-      end
-    end
-  end
-end
 
-def team_names
-arr = []
-game_hash.each do |game_d, game_v|
-arr << game_hash[game_d][:team_name]
-    end
-  arr
-end
-
-def player_numbers(team_name)
-  game_hash.each do |game_d, game_v|
-    game_v.each do |team_d, team_v|
-      if team_d == :team_name
-        team_v.each_line.with_index do |data, i|
-          if data == team_name
-            return game_hash[game_d][:players][:number]
-          end
-        end
-      end
-    end
-  end
-end
-
-def player_stats(player_name)
-game_hash.each do |game_d, game_v|
-game_v.each do |team_d, team_v|
-if team_d == :players
-team_v.each do |player_d, player_v|
-player_v.each_with_index do |data, i|
-  binding.pry
-   if data == player_name
-   return game_hash[game_d][team_d][player_d]
-end
-end
-end
-end
-end
-end
-"staph"
-end
