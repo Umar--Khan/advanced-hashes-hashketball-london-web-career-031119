@@ -116,10 +116,10 @@ end
 def num_points_scored(player_name)
   game_hash.each do |game_d, game_v|
   game_v.each do |team_d, team_v|
-  if team_d == :players  
+  if team_d == :players
   team_v.each do |player_d, player_v|
   player_d.each do |test, index|
-  if index ==  player_name  
+  if index ==  player_name
   return game_hash
             end
           end
@@ -128,4 +128,3 @@ def num_points_scored(player_name)
     end
   end
 end
-   
