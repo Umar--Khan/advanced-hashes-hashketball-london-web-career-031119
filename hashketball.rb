@@ -130,7 +130,7 @@ end
 def team_colors(team_name)
   game_hash.each do |location, value|
     if value[:team_name] == team_name
-      return keys[:colors]
+      return value[:colors]
     end
   end
 end
