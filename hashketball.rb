@@ -138,3 +138,22 @@ end
 def team_names
   game_hash.collect {|location, value| value[:team_name]}
 end
+
+def player_numbers(team_name)
+  game_hash.each do |location, value|
+    if value[:team_name] == team_name
+      return value[:players].collect {|player| player[:number]}
+    end
+  end
+end
+
+def player_stats(player_name)
+  game_hash.each do |location, value|
+    value[:players].each do |player|
+      if player[:player_name] == player_name
+        return player.reject! {|numbs, value| [:player_name].include?(numbs)}
+      end
+    end
+  end
+end
+
